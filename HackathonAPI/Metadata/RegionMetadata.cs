@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace HackathonApi.Models;
+namespace HackathonApi.Metadata;
 
 public class RegionMetadata
 {

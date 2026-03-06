@@ -18,24 +18,24 @@ public class ChallengeController : ControllerBase
 
     // GET: api/Challenge
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<ChallengeReadDto>>> GetAll()
+    public async Task<ActionResult<IEnumerable<ChallengeDTO>>> GetAll()
     {
         var challenges = await _context.Challenges
             .AsNoTracking()
             .OrderBy(c => c.Name)
             .ToListAsync();
 
-        return Ok(challenges.Select(c => new ChallengeReadDto { ID = c.ID, Code = c.Code, Name = c.Name }));
+        return Ok(challenges.Select(c => new ChallengeDTO { ID = c.ID, Code = c.Code, Name = c.Name }));
     }
 
     // GET: api/Challenge/{id}
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<ChallengeReadDto>> GetById(int id)
+    public async Task<ActionResult<ChallengeDTO>> GetById(int id)
     {
         var c = await _context.Challenges.AsNoTracking().FirstOrDefaultAsync(x => x.ID == id);
         if (c == null) return NotFound();
 
-        return Ok(new ChallengeReadDto { ID = c.ID, Code = c.Code, Name = c.Name });
+        return Ok(new ChallengeDTO { ID = c.ID, Code = c.Code, Name = c.Name });
     }
 
     // GET: api/Challenge/inc

@@ -1,13 +1,12 @@
-﻿namespace HackathonApi.DTO
-{
-    public class RegionReadDto
-    {
-        public int ID { get; set; }
-        public string? Code { get; set; }
-        public string? Name { get; set; }
-    }
+﻿using HackathonApi.Metadata;
+using HackathonApi.Models;
+using Microsoft.AspNetCore.Mvc;
+using HackathonAPI.Metadata;
 
-    public class RegionWithMembersDto
+namespace HackathonApi.DTO
+{
+    [ModelMetadataType(typeof(MemberMetadata))]
+    public class RegionDTO
     {
         public int ID { get; set; }
         public string? Code { get; set; }

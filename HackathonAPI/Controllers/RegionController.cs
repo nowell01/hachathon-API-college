@@ -18,24 +18,24 @@ public class RegionController : ControllerBase
 
     // GET: api/Region
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<RegionReadDto>>> GetAll()
+    public async Task<ActionResult<IEnumerable<RegionDTO>>> GetAll()
     {
         var regions = await _context.Regions
             .AsNoTracking()
             .OrderBy(r => r.Name)
             .ToListAsync();
 
-        return Ok(regions.Select(r => new RegionReadDto { ID = r.ID, Code = r.Code, Name = r.Name }));
+        return Ok(regions.Select(r => new RegionDTO { ID = r.ID, Code = r.Code, Name = r.Name }));
     }
 
     // GET: api/Region/{id}
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<RegionReadDto>> GetById(int id)
+    public async Task<ActionResult<RegionDTO>> GetById(int id)
     {
         var r = await _context.Regions.AsNoTracking().FirstOrDefaultAsync(x => x.ID == id);
         if (r == null) return NotFound();
 
-        return Ok(new RegionReadDto { ID = r.ID, Code = r.Code, Name = r.Name });
+        return Ok(new RegionDTO { ID = r.ID, Code = r.Code, Name = r.Name });
     }
 
     // GET: api/Region/inc
