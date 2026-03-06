@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using HackathonApi.Metadata;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HackathonApi.Models;

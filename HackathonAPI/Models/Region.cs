@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HackathonApi.Metadata;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HackathonApi.Models;
 

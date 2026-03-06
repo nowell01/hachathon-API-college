@@ -40,7 +40,7 @@ public class RegionController : ControllerBase
 
     // GET: api/Region/inc
     [HttpGet("inc")]
-    public async Task<ActionResult<IEnumerable<RegionWithMembersDto>>> GetAllWithMembers()
+    public async Task<ActionResult<IEnumerable<RegionDTO>>> GetAllWithMembers()
     {
         var regions = await _context.Regions
             .AsNoTracking()
@@ -49,7 +49,7 @@ public class RegionController : ControllerBase
             .OrderBy(r => r.Name)
             .ToListAsync();
 
-        var result = regions.Select(r => new RegionWithMembersDto
+        var result = regions.Select(r => new RegionDTO
         {
             ID = r.ID,
             Code = r.Code,
@@ -74,7 +74,7 @@ public class RegionController : ControllerBase
 
     // GET: api/Region/inc/{id}
     [HttpGet("inc/{id:int}")]
-    public async Task<ActionResult<RegionWithMembersDto>> GetByIdWithMembers(int id)
+    public async Task<ActionResult<RegionDTO>> GetByIdWithMembers(int id)
     {
         var r = await _context.Regions
             .AsNoTracking()
@@ -84,7 +84,7 @@ public class RegionController : ControllerBase
 
         if (r == null) return NotFound();
 
-        var dto = new RegionWithMembersDto
+        var dto = new RegionDTO
         {
             ID = r.ID,
             Code = r.Code,

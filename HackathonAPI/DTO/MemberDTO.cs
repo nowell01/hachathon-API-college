@@ -1,7 +1,6 @@
 ﻿using HackathonApi.Metadata;
 using HackathonApi.Models;
 using Microsoft.AspNetCore.Mvc;
-using HackathonAPI.Metadata;
 
 namespace HackathonApi.DTO
 {

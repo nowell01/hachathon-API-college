@@ -40,7 +40,7 @@ public class ChallengeController : ControllerBase
 
     // GET: api/Challenge/inc
     [HttpGet("inc")]
-    public async Task<ActionResult<IEnumerable<ChallengeWithMembersDto>>> GetAllWithMembers()
+    public async Task<ActionResult<IEnumerable<ChallengeDTO>>> GetAllWithMembers()
     {
         var challenges = await _context.Challenges
             .AsNoTracking()
@@ -49,7 +49,7 @@ public class ChallengeController : ControllerBase
             .OrderBy(c => c.Name)
             .ToListAsync();
 
-        var result = challenges.Select(c => new ChallengeWithMembersDto
+        var result = challenges.Select(c => new ChallengeDTO
         {
             ID = c.ID,
             Code = c.Code,
@@ -74,7 +74,7 @@ public class ChallengeController : ControllerBase
 
     // GET: api/Challenge/inc/{id}
     [HttpGet("inc/{id:int}")]
-    public async Task<ActionResult<ChallengeWithMembersDto>> GetByIdWithMembers(int id)
+    public async Task<ActionResult<ChallengeDTO>> GetByIdWithMembers(int id)
     {
         var c = await _context.Challenges
             .AsNoTracking()
@@ -84,7 +84,7 @@ public class ChallengeController : ControllerBase
 
         if (c == null) return NotFound();
 
-        var dto = new ChallengeWithMembersDto
+        var dto = new ChallengeDTO
         {
             ID = c.ID,
             Code = c.Code,
